@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Job</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+    
+    #container {
+        width: 700px;
+        margin-left: 50px;
+    }
+
+    #left_header {
+        display: inline-block;
+        width: 550px;
+    }
+    #right_header {
+        display: inline-block;
+    }
+
+    button {
+        color: black;
+        box-shadow: 2px 2px 1px;
+        background-color: white;
+    }    
+
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="left_header">
+                <h2>Hello, {{user.first_name}}! These are the job details!</h2>
+            </div>
+            <div id="right_header">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div id="main">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>{{jobs.title}}</strong><br>
+                            {{jobs.description}}<br>
+                            Location: {{jobs.location}}<br>
+                            Category: {{jobs.job_category.name}}<br>
+                            Posted by: {{jobs.posted_by.first_name}}<br>
+                            Posted on: {{jobs.created_at}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+    
+    
+</body>
+</html>

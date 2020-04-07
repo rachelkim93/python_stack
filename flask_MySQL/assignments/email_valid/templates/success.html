@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation With DB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div>
+        <h2 class="col-6 offset-2 bg-success">The email address you entered ({{ session['email'] }}) is a VALID email address! Thank you!</h2>
+        <h3 class="offset-1"><u>Email Addresses Entered</u></h3>
+        <table class="col-4 table offset-2">
+            {% for i in emailsarr %}
+            <tr>
+                <td>{{ i['email'] }}</td>
+                <td>{{ i['created_at'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action='/delete' method='POST'>
+            <input type="hidden">
+            <input class="btn btn-danger offset-2" type="submit" value="Delete">
+        </form>
+    </div>
+</body>
+</html>

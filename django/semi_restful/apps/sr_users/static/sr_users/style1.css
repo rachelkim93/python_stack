@@ -1,0 +1,28 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+   }
+   body {
+       width: 650px;
+       background-color: cornsilk;
+   }
+   .friends_tb {
+       border: 1px solid black;
+       padding: 2px;
+       margin: 15px;
+   }
+   .tb_row {
+       height: 35px;
+       padding: 3px;
+   }
+   .th_data   {
+       height: 35px;
+       padding: 3px;
+       border: 1px solid black;
+   }
+   .tb_data {
+       height: 35px;
+       padding: 5px;
+       border: 1px solid black;
+   }

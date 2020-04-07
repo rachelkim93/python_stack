@@ -1,0 +1,195 @@
+pip install Django==1.11.9
+Installed Django into virtual python3Env in myEnvironments folder
+
+pip list
+Included Django
+
+deactivate
+
+pip3 list
+Did not include Django because it was deactivated
+Lists installed package, including editable
+
+source myEnvironments/py3Env/bin/activate
+Activated virtual environment again
+
+pip install Django==1.11.9
+Was told the requirement was already satisfied
+
+pip freeze
+Output installed packages in requirements format
+
+pip freeze > requirements.txt
+Created a file on my desktop that includes
+Django==1.11.9
+pytz==2018.5
+
+pip uninstall Django
+
+pip show Django
+Nothing showed
+
+pip search Flask
+
+
+(python3Env) Rachels-MacBook-Pro:myEnvironments rachel$ pip install Django==1.11.9
+Collecting Django==1.11.9
+  Downloading https://files.pythonhosted.org/packages/c8/a6/291039f0ce4b9818e0399359866337e6dfe9c0e23d8d94f00e657edbfcd8/Django-1.11.9-py2.py3-none-any.whl (6.9MB)
+    100% |████████████████████████████████| 7.0MB 757kB/s 
+Collecting pytz (from Django==1.11.9)
+  Downloading https://files.pythonhosted.org/packages/30/4e/27c34b62430286c6d59177a0842ed90dc789ce5d1ed740887653b898779a/pytz-2018.5-py2.py3-none-any.whl (510kB)
+    100% |████████████████████████████████| 512kB 2.5MB/s 
+Installing collected packages: pytz, Django
+Successfully installed Django-1.11.9 pytz-2018.5
+(python3Env) Rachels-MacBook-Pro:myEnvironments rachel$ pip list
+Package    Version
+---------- -------
+Django     1.11.9 
+pip        18.0   
+pytz       2018.5 
+setuptools 40.4.3 
+wheel      0.32.0 
+(python3Env) Rachels-MacBook-Pro:myEnvironments rachel$ deactivate
+Rachels-MacBook-Pro:myEnvironments rachel$ pip3 list
+Package    Version
+---------- -------
+pip        18.0   
+setuptools 40.4.1 
+virtualenv 16.0.0 
+wheel      0.31.1 
+Rachels-MacBook-Pro:myEnvironments rachel$ source python3Env/bin/activate
+(python3Env) Rachels-MacBook-Pro:myEnvironments rachel$ pip install Django==1.11.9
+Requirement already satisfied: Django==1.11.9 in ./python3Env/lib/python3.7/site-packages (1.11.9)
+Requirement already satisfied: pytz in ./python3Env/lib/python3.7/site-packages (from Django==1.11.9) (2018.5)
+(python3Env) Rachels-MacBook-Pro:myEnvironments rachel$ pip freeze
+Django==1.11.9
+pytz==2018.5
+(python3Env) Rachels-MacBook-Pro:myEnvironments rachel$ cd ~/Desktop
+(python3Env) Rachels-MacBook-Pro:Desktop rachel$ pip freeze > requirements.txt
+(python3Env) Rachels-MacBook-Pro:Desktop rachel$ ls
+colin_jamathon.mov	requirements.txt
+(python3Env) Rachels-MacBook-Pro:Desktop rachel$ pip uninstall django
+Uninstalling Django-1.11.9:
+  Would remove:
+    /Users/rachel/Documents/coding_dojo/python_stack/myEnvironments/python3Env/bin/django-admin
+    /Users/rachel/Documents/coding_dojo/python_stack/myEnvironments/python3Env/bin/django-admin.py
+    /Users/rachel/Documents/coding_dojo/python_stack/myEnvironments/python3Env/lib/python3.7/site-packages/Django-1.11.9.dist-info/*
+    /Users/rachel/Documents/coding_dojo/python_stack/myEnvironments/python3Env/lib/python3.7/site-packages/django/*
+Proceed (y/n)? y
+  Successfully uninstalled Django-1.11.9
+(python3Env) Rachels-MacBook-Pro:Desktop rachel$ pip show Django
+(python3Env) Rachels-MacBook-Pro:Desktop rachel$ pip search Flask
+Flask-OrientDB (0.1)        - A Flask extension for using OrientDB with Flask
+Flask-Pure (0.5)            - Flask-Pure - a Flask extension for Pure.css
+Flask-SimpleMDE (0.3.0)     - Flask-SimpleMDE - a Flask extension for
+                              SimpleMDE
+Fifty-Flask (1.4.0)         - Flask enhancements.
+Flask-AutoIndex (0.6.2)     - The mod_autoindex for Flask
+Flask-BDEA (0.1.0)          - Flask-BDEA
+Flask-Chargebee (0.0.1)     - Flask-Chargebee
+Flask-Clearbit (0.1.0)      - Flask-Clearbit
+Flask-ElasticUtils (0.1.7)  - ElasticUtils for Flask
+Flask-FileRev (0.1.0)       - Flask-FileRev
+Flask-FontAwesome (0.1.2)   - FontAwesome for Flask
+Flask-Gears (0.2)           - Gears for Flask
+Flask-GripControl (0.0.1)   - Flask GripControl
+Flask-Helper (0.19)         - Flask Helper
+Flask-Intercom (0.1.0)      - Flask-Intercom
+Flask-Keen (0.1.0)          - Flask-Keen
+Flask-Mustache (0.4.1)      - Mustache for Flask
+Flask-NextCaller (0.1.0)    - Flask-NextCaller
+Flask-OAuthlib (0.9.5)      - OAuthlib for Flask
+Flask-PubSub (0.1.0)        - Flask-PubSub
+Flask-Quik (0.1.1)          - Quik for Flask
+Flask-Shopify (0.2)         - Shopify Flask
+Flask-SPF (0.0.0)           - Flask-SPF
+Flask-SRI (0.1.0)           - Flask-SRI
+Flask-Stripe (0.1.0)        - Flask-Stripe
+Flask-TaskTiger (0.0.1)     - Flask TaskTiger
+flask-toolbox (0.0.2)       - A flask toolbox.
+Flask-Turbolinks (0.2.0)    - Turbolinks for Flask.
+Flask-Watson (0.1.0)        - Flask-Watson
+Flask-Weixin (0.5.0)        - Weixin for Flask.
+flask-ws (0.0.1.0)          - Websocket for flask.
+flask-ypaginate (0.1.3)     - Pagination for Flask
+sockjs-flask (0.3)          - SockJs for Flask
+airbrake-flask (1.0.7)      - airbrake-flask - Airbrake client for Python
+                              Flask
+Flask-Diced (0.3)           - Flask-Diced - CRUD views generator for Flask
+Flask-GeoIP (0.1.3)         - Flask-GeoIP -------------  Simple Flask
+                              extension for pygeoip.
+flask-myapi (0.1)           - Flask-MyAPI - RESTful support library for Flask
+Flask-LoginManager (1.1.6)  - Flask-Loginmanager supports multiple roles and
+                              permissions for Flask, inspired by Flask-Login
+Flask-RESTive (0.0.3)       - Flask RESTive is a REST API Flask extension
+                              based on Flask-RESTful & Marshmallow.
+Flask-FlatPagesCut (0.5.1)  - Flask-FlatPagesCut is fork Flask-FlatPages
+                              (Provides flat static pages to a Flask
+                              application)
+flask-coffee2js (0.1.2)     - A small Flask extension that adds CoffeScript
+                              support to Flask.
+Flask-Collect (1.3.2)       - Flask-Collect -- Collect static files in Flask
+                              application
+flask-filters (0.3)         - The Flask Filter to use with flask-restful and
+                              Relational DB
+flask-lesscss (0.9.1)       - A small Flask extension that adds LessCSS
+                              support to Flask.
+flask-shell (0.1.3)         - Flask extension to improve shell command for the
+                              Flask CLI.
+flask-stylus2css (0.1)      - A small Flask extension that adds Stylus support
+                              to Flask.
+castle-flask (0.0.1)        - A Flask client for Castle.io
+Flask-Airbrake (0.0.3)      - Flask extension for Airbrake
+Flask-Alchy (0.5.0)         - Flask extension for alchy
+Flask-Auth (0.85)           - Auth extension for Flask.
+Flask-Autodoc (0.1.2)       - Documentation generator for flask
+Flask-Avatar (0.1.3)        - To generate avatar for flask
+Flask-Bcrypt (0.7.1)        - Brcrypt hashing for Flask.
+flask-blitzdb (0.1)         - Flask extension for blitzdb
+flask-bluelogin (0.2.7)     - Flask BlueLogin module
+flask-blueprint (1.2.2)     - Flask blueprint generator
+flask-bluestatic (0.1.0)    - Flask BlueStatic module
+Flask-Breve (0.2)           - Breve templating with Flask
+Flask-Builder (0.9)         - Flask-application factory
+Flask-Captain (0.1.1)       - Handle webhooks with Flask
+Flask-CAS (1.0.1)           - Flask extension for CAS
+Flask-CassandraDB (0.0.1)   - connect cassandra to flask
+Flask-Celery (2.4.3)        - Celery integration for Flask
+Flask-CKEditor (0.4.2)      - CKEditor integration for Flask.
+Flask-Config (0.2.1)        - Flask configuration class
+Flask-CuttlePool (0.2.0)    - A Flask extension for CuttlePool
+Flask-DBKit (0.0.1)         - dbkit integration for Flask.
+flask-discoverer (0.0.5)    - Flask API autodiscovery
+flask-dynamo (0.1.2)        - DynamoDB integration for Flask.
+Flask-Edits (0.8)           - Editable Content in Flask
+Flask-Enterprise (1.0)      - Enterprise capabilities for Flask
+flask-erppeek (1.0.1)       - ERPPeek Connector for Flask
+Flask-Extension (1.0)       - Demo for flask extension.
+Flask-Failsafe (0.2)        - A failsafe for the Flask reloader
+Flask-Flarf (0.0.5)         - Flask request filtering
+Flask-Fleem (0.0.5)         - Theming for Flask applications
+Flask-FluidDB (0.1)         - Fluiddb access for flask
+Flask-Formspree (0.3)       - formspree flask extension
+Flask-Fulfil (0.2.1)        - Fulfil.IO for Flask Apps
+Flask-Funnel (0.1.10)       - Asset management for Flask.
+flask-handlers (0.0.1)      - Handlers for Flask applications
+Flask-HttpCaching (0.01)    - flask http caching
+flask-hype (0.1.4)          - Flask extension for hype
+flask-iMail (0.1)           - Mailgun integration for Flask.
+flask-journey (0.1.4)       - Flask blueprint management
+flask-kser (0.2.1)          - Flask KSer example
+Flask-Lastuser (0.3.12)     - Flask extension for Lastuser
+Flask-Latch (0.1.0)         - Latch extension for Flask
+flask-logmanager (0.2.10)   - Flask LogManager module
+flask-logsocketio (0.1.4)   - Flask LogSocketIo module
+flask-macros (0.1.5)        - macros for flask projects
+flask-manager (0.0.1)       - A CRUD manager for Flask
+Flask-mongobit (0.1.2)      - MongoBit support in Flask
+Flask-MongoDB (0.0.1a8)     - MongoDB flask extension
+flask-monitor (0.2.6)       - Flask Monitor module
+Flask-MySQLdb (0.2.0)       - MySQLdb extension for Flask
+flask-nap (0.1)             - Flask REST Framework
+Flask-Navigation (0.2.0)    - The navigation of Flask application.
+flask-now (0.1.5)           - Flask App Generator
+Flask-OAuthRes (0.2.0)      - OAuth Resource for Flask
+(python3Env) Rachels-MacBook-Pro:Desktop rachel$ 

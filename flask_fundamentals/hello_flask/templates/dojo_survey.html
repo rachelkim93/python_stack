@@ -1,0 +1,41 @@
+<form action='/result' method='post'>
+    Your Name: <input type='text' name='name' id='name'>
+    <br>
+    Dojo Location:
+   <select name="Dojolocation" id='location'>
+   <option value="Chicago">Chicago</option>
+   <option value="San jose">San Jose</option>
+   <option value="Texas">Texas</option>
+  </select>
+  <br>
+  Favorite Language:
+   <select name="FavoriteLanguage">
+   <option value="Python">Python</option>
+   <option value="Ruby">Ruby</option>
+   <option value="IOS">IOS</option>
+ </select>
+   <p> Comment (optional):</p>
+   <br>
+   <textarea name="description"></textarea>
+   <input type="submit" value="Submit" id="sub">
+ </form>
+ {% with messages = get_flashed_messages() %}
+   {% if messages %}
+     {% for message in messages %}
+       <p id="msg">{{message}}</p>
+     {% endfor %}
+   {% endif %}
+ {% endwith %}
+
+
+ <!-- <h2> Submitted Info </h2>
+<div id="display">
+      <p> Your Name:{{name}}</p>
+      <p> Dojo location: {{location}}</p>
+      <p> Favorite Language {{language}}</p>
+      <p> Comment:{{comment}}</p>
+</div>
+
+<form action="/">
+  <button> Go Back </button>
+</form> -->

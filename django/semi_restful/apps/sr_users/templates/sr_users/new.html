@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Semi-Rest Friends</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'sr_users/css/style.css' %}">
+</head>
+<body>
+<div class='main'>
+    {% if messages %}
+    {% for msg in messages %}
+      <div class="alert">
+        {{msg.message}}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <h1 class='header'>Add New User</h1>
+  <div class='disp_info'>
+    <form action='create' method='POST'>
+      {% csrf_token %}
+      <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label><br>
+      <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label><br>
+      <label for="email">Email:<input type="text" name="email" id="email"></label><br>
+      <input class='btn' type="submit" value="Create">
+    </form>
+  </div>
+  <div class='bot_nav'>
+    <a href="/users">Home</a>
+  </div>
+</div>
+</body>
+</html>

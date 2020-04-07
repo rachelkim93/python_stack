@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quote Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    #wrapper {
+        width: 974px;
+    }
+    #header-left {
+        display: inline-block;
+        width: 800px;
+        margin: 0 20px;
+    }
+    #header-right {
+        display: inline-block;
+        width: 130px;
+    }
+    #main-left {
+        display: inline-block;
+        width: 600px;
+        margin: 20px;
+    }
+    #main-right {
+        display: inline-block;
+        width: 270px;
+        vertical-align: top;
+        margin: 20px;
+    }
+
+    </style>
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="header-left">
+                <h1>Welcome {{request.session.first_name}}</h1>
+            </div>
+            <div id="header-right">
+                <a href="/edit_account/{{user.id}}">Edit My Account</a> | 
+                <a href="/logout">Logout</a>
+            </div>
+        
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        </div>
+
+        <div id="main">
+            <div id="main-left">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Quotes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in quotes %}
+                        <tr>
+                            <td>{{i.author}}: "{{i.quote}}"<br>
+                                Posted by <a href="/show/{{i.posted_by.id}}">{{i.posted_by.first_name}} {{i.posted_by.last_name}}</a><br>
+                                {{ i.liked_by.count }} people like this. <button><a href="/like/{{i.id}}">Like!</a></button><br>
+                                {% if i in posted_quotes %}
+                                <a href="/delete/{{i.id}}">Delete</a>
+                                {% endif %}
+                            </td>  
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="main-right">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Add a Quote</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form action="/add" method="POST">
+                                    {% csrf_token %}
+                                    <p>Author: <input type="text" name="author"></p>
+                                    <p>Quote: <textarea name="quote" rows=4 cols=40></textarea></p>
+                                    <button>Submit</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

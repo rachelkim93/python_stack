@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="p-5 text-center">
+        {% if session['valid'] != "invalid" %}
+            <h1 class="mx-auto">Email validation with DB</h1>
+        {% endif %}
+        {% if session['valid'] == "invalid" %}
+            <h2 class="bg-danger col-6 p-5 mx-auto">Email is not valid!</h2>
+        {% endif %}
+        {% if session['valid'] == "delete" %}
+            <h3 class="bg-success col-6 p-5 mx-auto">Email was successfully deleted.</h3>
+        {% endif %}
+        <form action="/valid" method="POST">
+            <table class="mx-auto">
+                <tr>
+                    <td class="py-2">Email address:</td>
+                    <td class="py-2"><input type="text" name="email" class="offset-4"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="offset-11 btn btn-primary"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

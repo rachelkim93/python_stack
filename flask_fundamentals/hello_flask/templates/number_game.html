@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Game</title>
+    <style>
+        .header{
+            text-align: center;
+        }
+
+        /* .inputs {
+            float: center;
+        } */
+        
+        .inputs {
+            text-align: center;
+            display: inline;
+            /* margin-left: 880px; */
+        }
+        .alerts{
+            text-align: center;
+            display: block;
+        }
+        #alert{
+            height: 100px;
+            width: 200px;
+            background-color: red;
+            display: inline-block;    
+            color: white;
+            padding-top: 30px;
+        }
+
+
+    </style>
+    
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Welcome to the Great Number Game!</h3>
+            <p>I am thinking of a number between 1 and 100
+                <br>
+                Take a guess!
+            </p>
+        
+        </div>
+        <div class="alerts" style="display: {{ visibility }};">
+            <div id="alert" style="background-color: {{ color }};">
+                {{ text }}
+                <br>
+                <br>
+                <br>
+                <form action="/logout" method="post">
+                    <input type='submit'style="display: {{ btnvisibility }};"value="Play Again" >
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="inputs">
+            <form action="/result" method="post">
+                <input type="text" name='number'>
+                <br>
+                <input type="submit" value="Submit">
+                
+            </form>
+        </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Times</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'times/style.css' %}">
+
+
+</head>
+<body>
+    <h1>Current Time & Date</h1>
+    <div class='container'>
+        {% if datetime %}
+            {% for dt in datetime %}
+            <p>{{dt.date}}</p>
+            <p>{{dt.time}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit a Job</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+    #container {
+        width: 700px;
+        margin-left: 50px;
+    }
+
+    #left_header {
+        display: inline-block;
+        width: 550px;
+    }
+    #right_header {
+        display: inline-block;
+    }
+
+    button {
+        color: black;
+        box-shadow: 2px 2px 1px;
+        background-color: white;
+        margin-left: 10px;
+    }    
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="left_header">
+                <h3>Hello {{user.first_name}}! Let's edit your wish!</h3>
+            </div>
+            <div id="right_header">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <div id="main">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div id="form">
+                <form action="/edit_wish/{{wish.id}}" method="POST">
+                    {% csrf_token %}
+                 
+                    <p>I wish for: <input type="text" name="item" value="{{wish.item}}"></p>
+                    <p>Description: <input type="text" name="description" value="{{wish.description}}"></p>
+                    <button>Submit</button><button><a href="/dashboard">Cancel</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

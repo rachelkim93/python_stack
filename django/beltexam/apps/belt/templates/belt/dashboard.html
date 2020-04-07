@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+    
+    #container {
+        width: 700px;
+        margin-left: 50px;
+    }
+
+    #left_header {
+        display: inline-block;
+        width: 550px;
+    }
+    #right_header {
+        display: inline-block;
+    }
+
+    button {
+        color: black;
+        box-shadow: 2px 2px 1px;
+        background-color: white;
+    }
+    
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="left_header">
+                <h1>Hello, {{user.first_name}}!</h1>
+            </div>
+            <div id="right_header">
+                <a href="/logout">Logout</a>
+                <button><a href="/new/{{user.id}}">New Job!</a></button>
+            </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        </div>
+
+        <div id="main">
+            <h2>Everyone's jobs:</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Job</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in jobs %}
+                    {% if i.has_job_id == 0 %}
+                    <tr>
+                        <td>{{i.title}}</td>
+                        <td>{{i.location}}</td>
+                        <td>
+                            <a href="/view/{{i.id}}">View</a>
+                            |<a href="/addJob"> Add</a>
+                            {% if i in posted_jobs %}
+                            |<a href="/delete/{{i.id}}"> Remove </a>
+                            |<a href="/edit/{{i.id}}"> Edit </a>
+                            {% endif %}
+                            <!-- <a href="/new/{{user.id}}">Add</a> -->
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="new_table">
+            <h2>{{user.first_name}}'s Jobs</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Job</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for j in jobs %}
+                    {% if j.has_job_id == user.id %}
+                    <tr>
+                        <td>{{j.title}}</td>
+                        <td>
+                            <a href="/view/{{i.id}}">View</a>
+                            |<a href="/finish_job"> Done </a>
+                            |<a href="/giveUp"> Give up! </a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+                </table>
+        </div>
+    </div>
+    
+</body>
+</html>

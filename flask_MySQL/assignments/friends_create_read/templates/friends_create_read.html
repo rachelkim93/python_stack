@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>My Friends</title>
+
+    <style>
+    * {
+        margin: 0 auto;
+    }
+    
+    .table {
+        width: 400px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        margin-left: 500px;;
+    }
+    
+    #btn{
+        background-color: lightblue;
+        color: white;
+        margin-left: 360px;
+    }
+
+    #h12{
+        margin-left: -200px;
+        text-decoration: underline; 
+    }
+    </style>
+    
+</head>
+<body>
+
+    <h1>
+        These are all my friends!
+    </h1>
+    <table class="table table-striped">
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Occupation</th>
+        </thead>
+        {% for friend in friends %}
+        <tbody>
+                <td>{{friend['first_name']}}</td>
+                <td>{{friend['last_name']}}</td>
+                <td>{{friend['occupation']}}</td>
+        </tbody>
+        {% endfor %}
+    </table>
+    <br>
+
+    <h1 id="h12">Add a friend</h1>
+    <form action='/friends' method='POST'>
+        <label for="first_name">First name: <input type="text" name="first_name"></label><br>
+        <label for="last_name">Last name: <input type="text" name="last_name"></label><br>
+        <label for="occupation">Occupation: <input type="text" name="occupation"></label><br>
+        <input type="submit" value="Add" id="btn"><br>
+    </form>
+
+    
+</body>
+</html>

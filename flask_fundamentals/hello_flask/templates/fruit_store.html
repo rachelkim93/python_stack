@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Fruit Store</title>
+
+    <style>
+
+        #left_side {
+            display: inline-block;
+            width: 500px;
+        }
+
+        .table {
+            width: 400px;
+            border: 2px solid black;
+        }
+
+        #sub {
+            background-color: #b6d7a8;
+            box-shadow: 2px 2px 1px black;
+            padding: 5px 15px;
+            margin-top: 10px;
+        }
+
+        form { 
+            overflow: hidden;
+            width: 400px;
+        }
+        input {
+            float: right;
+            clear: both;
+            border: 2px solid black;
+        }
+        
+        #right_side {
+            display: inline-block;
+            width: 230px;
+            vertical-align: top;
+            background-color: #b4a7d6;
+            margin-top: 30px;
+            padding: 10px;
+            border: 2px solid black;
+            margin-left: -50px;
+            padding-bottom: 150px;
+        }
+
+        #welcome {
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="left_side">
+        <h1>Dojo Fruit Store!</h1>
+
+        <h2>What would you like to buy?</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fruit Name</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Strawberry</td>
+                    <td><select name="strawberry" id="fruit">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Raspberry</td>
+                    <td><select name="raspberry" id="fruit">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>                        
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Apple</td>
+                    <td><select name="apple" id="fruit">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>                        
+                        </select>
+                    </td>
+                </tr>           
+            </tbody>
+        </table>
+
+        <h2>Your Information</h2>
+        <form action="/checkout" method="post">
+            Name: <input type="text" name="name" id="name">
+            <br><br>
+            Your Student ID: <input type="text" name="id" id="id">
+            <br>
+            <div id = "submit_button">
+                <input type="submit" value="Buy me stuff!" id="sub">
+            </div>
+        </form>
+    </div>
+    <div id="right_side">
+        <h2 id="welcome">Welcome to Dojo Fruit Store!</h2>
+        <br>
+        <p>Your dojo decided to buy fruits for all the students! Please use this app to tell us what you would like to have! Once we get your order, we'll charge your student account immediately.</p>
+        <br>
+        <p>Dojo Fruit Store is proudly built using Flask.</p>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    #container {
+        width: 974px;
+    }
+    #left_header {
+        display: inline-block;
+        width: 600px;
+        margin: 0 20px;
+    }
+    #right_header {
+        display: inline-block;
+        width: 130px;
+    }
+    #left_main {
+        display: inline-block;
+        width: 400px;
+        margin: 20px;
+    }
+    #right_main {
+        display: inline-block;
+        width: 270px;
+        vertical-align: top;
+        margin: 20px;
+    }
+
+    textarea {
+        resize: none;
+        vertical-align: top;
+    }
+
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="left_header">
+                <h1>Welcome, {{user.first_name}} {{user.last_name}}!</h1>
+            </div>
+            <div id="right_header">
+                <a href="/edit_account/{{user.id}}">Edit My Account</a> 
+                <a href="/logout">Logout</a>
+            </div>
+        
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        </div>
+
+        <div id="main">
+            <div id="left_main">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Quotes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in quotes %}
+                        <tr>
+                            <td>{{i.author}}: "{{i.quote}}"<br>
+                                Posted by <a href="/show/{{i.posted_by.id}}">{{i.posted_by.first_name}} {{i.posted_by.last_name}}</a><br>
+                                {{ i.liked_by.count }} people like this. <button><a href="/like/{{i.id}}">Like!</a></button><br><br>
+
+                                <form action="/comment" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="quote_id" value="{{i.id}}">
+                                <p id="comment">Comment: <textarea name="comment" rows=1 cols=20></textarea> <button>Comment</button></p>
+                                </form>
+
+                                {% if i in posted_quotes %}
+                                <a href="/delete/{{i.id}}">Delete</a>
+                                {% endif %}
+
+                                {% for j in i.posted_on.all %}
+                                    <p>{{ j.comment }}</p>
+                                    {% if j in commentor %}
+                                    <a href="/delete_comment/{{i.id}}">Delete C</a>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </td>  
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="right_main">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Add a Quote</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form action="/add" method="POST">
+                                    {% csrf_token %}
+                                    <p>Author: <input type="text" name="author"></p>
+                                    <p>Quote: <textarea name="quote" rows=4 cols=40></textarea></p>
+                                    <button>Submit</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

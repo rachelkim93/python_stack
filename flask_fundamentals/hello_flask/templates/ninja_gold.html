@@ -1,0 +1,196 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Coding Dojo Python/Flask Ninja Gold App assignment">
+        <title>Ninja Gold</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        
+        main {
+            padding: 30px;
+        }
+        
+        article {
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid black;
+            box-shadow: 1px 1px 5px gray;
+            height: 225px;
+        }
+        
+        main > section > article:first-child {
+            margin-left: 5%;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            font-size: 2.0em;
+        }
+        
+        h2, p, h1, section {
+            margin: 20px auto;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            margin: 20px 0 0 10px;
+        }
+        
+        .goldBtn {
+            font-size: 1.1em;
+            width: 6em;
+            height: 2em;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(white 0%,orange 60%);
+        }
+        
+        .goldBtn:hover {
+            cursor: pointer;
+            box-shadow: 1px 1px 5px black;
+        }
+        
+        .row {
+            width: 100%;
+            clear: both;
+            margin: 0 auto;
+        }
+        
+        .col {
+            display: inline-block;
+            float: left;
+        }
+        
+        .col-m-3 {
+            width: 20%;
+            margin: 20px;
+        }
+        
+        .col-m-12 {
+            width: 100%;
+        }
+        
+        #activities {
+            margin: 20px auto;
+            width: 90%;
+            height: 300px;
+            padding: 0 20px;
+            border: 1px solid black;
+            overflow-y: auto;
+            box-shadow: 1px 1px 5px gray;
+        }
+        
+        #activities p {
+            margin: 15px 0;
+        }
+        
+        .green {
+            color: green;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        a {
+            display: inline-block;
+            width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        a:hover {
+            cursor: default;
+        }
+        
+        button {
+            width: 9em;
+            font-size: 1.3em;
+            height: 2.0em;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(white,#4b81e8);
+        }
+        
+        button:hover {
+            cursor: pointer;
+            box-shadow: 1px 1px 5px black;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .col-sm-12 {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+    </head>
+    <body>
+        <main>
+            <header class="col col-m-12 row">
+                <h1>Your Gold: <span class="{{ session['goldColor'] }}">${{ session['gold'] }}</span></h1>
+    
+            </header>
+            <section class="row">
+                <article class="col col-m-3 mdlBox col-sm-12">
+                    <h2>Farm</h2>
+                    <p>(earns 10-20 golds)</p>
+                    <form action="/makeGold" method="post">
+                        <input type="hidden" name="place" value="farm">
+                        <input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+                    </form>
+                </article>
+                <article class="col col-m-3 mdlBox col-sm-12">
+                    <h2>Cave</h2>
+                    <p>(earns 5-10 golds)</p>
+                    <form action="/makeGold" method="post">
+                        <input type="hidden" name="place" value="cave">
+                        <input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+                    </form>
+                </article>
+                <article class="col col-m-3 mdlBox col-sm-12">
+                    <h2>House</h2>
+                    <p>(earns 2-5 golds)</p>
+                    <form action="/makeGold" method="post">
+                        <input type="hidden" name="place" value="house">
+                        <input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+                    </form>
+                </article>
+                <article class="col col-m-3 mdlBox col-sm-12">
+                    <h2>Casino</h2>
+                    <p>(earns/takes 0-50 golds)</p>
+                    <form action="/makeGold" method="post">
+                        <input type="hidden" name="place" value="casino">
+                        <input class="goldBtn" type="submit" name="submit" value="Find Gold!">
+                    </form>
+                </article>
+            </section>
+            <section class="col col-m-12 row">
+                <h3>Activities:</h3>
+                <div id="activities">
+                    {% if session['activities'] == []: %} <!--If there is no session['activities']yet...-->
+                        <p>Currently, you have no activity...</p>
+                    {% else: %} <!--If there is!-->
+                        {% for activity in session['activities']: %} <!--For every appended value in activities...-->
+                            <p class="{{ activity['class'] }}">{{ activity['activity'] }} ({{ activity['time'] }})</p> <!--Create a p tage displaying the activity-->
+                        {% endfor %}
+                    {% endif %}
+                </div><!-- end_of_activities-->
+            </section>
+            <a href="/reset"><button type="restart" name="restart">Restart Game</button></a>
+        </main>
+    </body>
+    </html>

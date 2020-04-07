@@ -1,0 +1,89 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.main {
+    width: 750px;
+    padding: 50px;
+    background-color: cornsilk;
+    display: inline-block;
+    vertical-align: top;
+}
+.users_table {
+    width: 650px;
+
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.checkout {
+    width: 600px;
+    padding: 70px;
+    background-color: cornsilk;
+}
+.in20 {
+    margin: 20px;
+}
+.name {
+    width: 150px;
+    display: inline-block;
+}
+.email {
+    width: 150px;
+    display: inline-block;
+}
+.date {
+    width: 130px;
+    display: inline-block;
+}
+.actions {
+    width: 140px;
+    display: inline-block;
+}
+.header {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 3px;
+}
+.bot_nav{
+    border-top: 1px solid black;
+    padding: 10px;
+}
+.disp_info {
+    padding: 10px;
+}
+.alert {
+    background-color: lightsalmon;
+}
+.Black {
+    color: black;
+}
+.Red {
+    color: red;
+}
+.Blue {
+    color: blue;
+}
+.Green {
+    color: green;
+}
+.btn {
+    background-color: steelblue;
+    margin-top: 10px;
+    width: 60px;
+    height: 25px;
+    color: white;
+}
+.bold {
+    font-weight: bold;
+}
+.big {
+    font-size: 24px;
+}
+.normal {
+    font-size: 15px;
+}
+p {
+    margin: 3px;
+    padding: 0px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lead And Clients</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        window.onload = function () {
+        
+        var options = {
+            title: {
+                text: "Number of Leads"
+            },
+            subtitles: [{
+                text: "By Customer"
+            }],
+            animationEnabled: true,
+            data: [{
+                type: "pie",
+                startAngle: 40,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: [
+                    {% for i in lead %}
+                    { y: {{ i['number_of_leads'] }} , label: "{{ i['customer_name'] }}" },
+                    {% endfor %}
+                ]
+            }]
+        };
+        $("#chartContainer").CanvasJSChart(options);
+        
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <h2 class="bg-gray">Report Dashboard</h2>
+        <form>
+            <input type="date" name="startdate">
+            <input type="date" name="enddate">
+            <input type="submit" value="Update">
+        </form>
+        <div id="body">
+            <h3><u>List of all customers and # of leads</u></h3>
+            <table>
+                <thead class="bg-gray">
+                    <th>Customer Name</th>
+                    <th>Number of Leads</th>
+                </thead>
+                <tbody>
+                    {% for i in lead %}
+                    <tr>
+                        {% if ['customer_name'] and ['number_of_leads'] %}
+                        <td>{{ i['customer_name'] }}</td>
+                        <td>{{ i['number_of_leads'] }}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div id="chartContainer"></div>
+                <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+                <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+        </div>
+    </div>
+</body>
+</html>

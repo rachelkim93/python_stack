@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wish Stats</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #container {
+            width: 800px;
+            margin-left: 50px;
+        }
+    
+        #left_header {
+            display: inline-block;
+            width: 650px;
+        }
+        #right_header {
+            display: inline-block;
+        }
+        #main{
+            margin-left: 20px;
+        }
+        button {
+            color: black;
+            box-shadow: 2px 2px 1px;
+            background-color: white;
+            margin-left: 10px;
+        }    
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="left_header">
+                <h1>Hello, {{user.first_name}}! These are your stats!</h1>
+            </div>
+            <div id="right_header">
+                <a href="/dashboard">Dashboard</a> | 
+                <a href="/logout">Logout</a>
+            </div>        
+
+            
+        <div id="main">
+            Total wishes granted so far for all users: {{ user.wishes_granted.all.count }}<br>
+            Your granted wishes: {{ user.granted_wish.count }} <br>
+            Your pending wishes: {{ user.wishes_pending.count }}<br>
+        </div>
+    </div>
+    
+</body>
+</html>

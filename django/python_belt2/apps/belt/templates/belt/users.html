@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User's Quotes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #container {
+            width: 974px;
+        }
+        #left_header {
+            display: inline-block;
+            width: 800px;
+        }
+        #right_header {
+            display: inline-block;
+            width: 170px;
+        }
+        #main {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="left_header">
+            </div>
+            <div id="right_header">
+                <a href="/dashboard">Back</a> | 
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div id="main">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{user.first_name}} {{user.last_name}}'s Quotes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in quotes %}
+                    <tr>
+                        <td>{{i.author}}: "{{i.quote}}"
+                        </td>  
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

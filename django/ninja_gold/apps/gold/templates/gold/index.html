@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        div{
+            border:1px solid black;
+            padding:25px;
+            text-align: center;
+            display: inline-block;
+            width:250px;
+        }
+        #activity{
+            width:500px;
+            height:250px;;
+            overflow-y:scroll;
+        }
+        .win{
+            color:green;
+        }
+        .lose{
+            color:red;
+        }
+        a{
+            display:block;
+            font-size:50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Gold: {{request.session.gold}}</h1>
+
+    <div>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <h3>Farm</h3>
+            <h5>(earns 10-20 gold)</h5>
+            <input type="hidden" name="building" value="farm">
+            <button>Submit</button>
+        </form>
+    </div>
+    <div>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <h3>Cave</h3>
+            <h5>(earns 5-10 gold)</h5>
+            <input type="hidden" name="building" value="cave">
+            <button>Submit</button>
+        </form>
+    </div>
+    <div>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <h3>House</h3>
+            <h5>(earns 2-5 gold)</h5>
+            <input type="hidden" name="building" value="house">
+            <button>Submit</button>
+        </form>
+    </div>
+    <div>
+        <form action="/process_money" method="POST">
+            {% csrf_token %}
+            <h3>Casino</h3>
+            <h5>(earns/loses 0-50 gold)</h5>
+            <input type="hidden" name="building" value="casino">
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <h3>Activities</h3>
+    <div id="activity">
+        {% for a in request.session.activities reversed %}
+            <p class="{{a.result}}">{{a.message}}</p>
+        {% endfor %}
+    </div>
+
+    <a href="/reset">Reset</a>
+</body>
+</html>

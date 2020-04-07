@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>Dojo Wall</title>
+        <style>
+            #wrap {
+                width: 100%;
+            }
+            #header {
+                position: relative;
+            }
+            img {
+                height: 25px;
+                width: 25px;
+            }
+            p {
+                margin-left: 20px;
+            }
+            .message {
+                display: inline-block;
+                width: 70%;
+                margin-left: 40px;
+                margin-right: 20px;
+            }
+            h1 {
+                display: inline-block;
+                margin-left: 20px;
+                margin-right: 35%;
+            }
+            ul {
+                list-style: none;
+                text-align: right;
+                position: absolute;
+                top: 20px;
+                right: 0px;
+            }
+            li {
+                display: inline;
+                margin-right: 20px;
+            }
+            #inbound {
+                display: inline-block;
+                width: 45%;
+                margin-right: 50px;
+                margin-left: 20px;
+            }
+            #outbound {
+                display: inline-block;
+                vertical-align: top;
+                width: 45%;
+            }
+            td {
+                padding-right: 20px;
+            }
+            form{
+                display: inline-block;
+            }
+            a{
+                padding: 10px;
+                background-color: red;
+                text-decoration: none;
+                color: white;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <h1>The Dojo Wall Message Center</h1>
+                <ul>
+                    <li>Welcome {{ session['fname'] }}!</li>
+                    <li><a href="/logout">Log Off</a></li>
+                </ul>
+            </div>
+            <div id="inbound">
+                
+                <h3>{{ received[0]['count(recipient_id)'] }} message(s) for you, {{ session['fname'] }}</h3>
+                {% for x in messages %}
+                {% set elapsed = (d|int) - (x['created_at']|int) %}
+                {% if elapsed > 0 %}
+                <p>{{ x['first_name'] }} said {{ elapsed }} days ago.</p>
+                {% endif %}
+                {% if elapsed == 1 %}
+                <p>{{ x['first_name'] }} said {{ elapsed }} day ago.</p>
+                {% endif %}
+                {% if elapsed < 1 %}
+                <p>{{ x['first_name'] }} said less than a day ago.</p>
+                {% endif %}
+                <p class="message">{{ x['message'] }}</p>
+                <form action="/delete" method='POST'>
+                    <input type="hidden" name= "delete" value="{{ x['id'] }}">
+                    <button><img src="{{ url_for('static', filename='delete.png') }}" alt="delete icon"></button>
+                </form> 
+                {% endfor %}
+            </div>
+            <div id="outbound">
+                <h3>Send a message</h3>
+                <h5>You have sent a total of {{ outbound[0]['count(sender_id)'] }} message(s)</h5>
+                <table>
+                    {% for x in users %}
+                    <tr>
+                        <td>{{ x['first_name'] }}</td>
+                        <form action='/send' method='POST'>
+                            <input type="hidden" name="recipient_id" value="{{ x['id'] }}">
+                            <td><textarea name="message" cols="60" rows="3"></textarea></td>
+                            <td><button type="submit">Send</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

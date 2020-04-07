@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Semi-Rest Friends</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'sr_users/css/style.css' %}">
+</head>
+<body>
+<div class='main'>
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="alert">
+        {{msg.message}}
+      </div>
+    {% endfor %}
+  {% endif %}
+  <h1 class='header' >User</h1>
+  <div class='disp_info'>
+    <p>Full Name: {{ user.first_name }} {{ user.last_name }} </p>
+    <p>Email: {{ user.email }}</p>
+    <p>Created at: {{ user.created_at|date:'b d, Y' }}</p>
+  </div>
+  <div class='bot_nav'>
+    <a href="/users/{{user.id}}/edit">Edit</a>  |  <a href="/users/{{user.id}}/destroy">Delete</a>  | <a href="/users">Home</a>
+  </div>
+</div>
+</body>
+</html>
